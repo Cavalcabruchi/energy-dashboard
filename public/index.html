@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EU Electricity Dashboard</title>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">EU Electricity Dashboard</span>
+      </div>
+      <nav>
+        <a href="/germany" class="nav-link">Germany Statistics →</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="controls-bar">
+    <div class="controls-inner">
+      <div class="control-group">
+        <span class="control-label">Zone</span>
+        <div class="btn-group" id="zone-selector">
+          <button class="btn active" data-zone="europe">Europe</button>
+          <button class="btn" data-zone="germany">Germany</button>
+          <button class="btn" data-zone="transnetbw">Baden-Württemberg</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <span class="control-label">Window</span>
+        <div class="btn-group" id="window-selector">
+          <button class="btn" data-window="daily">24h</button>
+          <button class="btn" data-window="bidaily">48h</button>
+          <button class="btn active" data-window="weekly">7d</button>
+          <button class="btn" data-window="monthly">30d</button>
+          <button class="btn" data-window="yearly">1y</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="dashboard-grid">
+    <!-- Generation Mix -->
+    <div class="card generation-card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Generation Mix</div>
+          <div class="card-subtitle" id="generation-subtitle">—</div>
+        </div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="generation-chart"></canvas>
+        <div class="card-overlay" id="generation-overlay"><div class="spinner"></div></div>
+      </div>
+    </div>
+
+    <!-- Renewable Share Donut -->
+    <div class="card donut-card">
+      <div class="card-title">Renewable Share</div>
+      <div class="canvas-wrapper">
+        <canvas id="donut-chart"></canvas>
+        <div class="card-overlay" id="donut-overlay"><div class="spinner"></div></div>
+      </div>
+      <div class="donut-stats" id="donut-stats"></div>
+    </div>
+
+    <!-- Day-ahead Price -->
+    <div class="card price-card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Day-ahead Price</div>
+          <div class="card-subtitle" id="price-subtitle">EUR / MWh</div>
+        </div>
+        <div class="price-stats" id="price-stats"></div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="price-chart"></canvas>
+        <div class="card-overlay" id="price-overlay"><div class="spinner"></div></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Data: <a href="https://transparency.entsoe.eu" target="_blank">ENTSO-E Transparency Platform</a></span>
+      <span id="footer-note" style="color:var(--text-muted);font-style:italic;"></span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script type="module" src="/js/dashboard.js"></script>
+</body>
+</html>

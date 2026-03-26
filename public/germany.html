@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Germany — Electricity Statistics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/germany.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">EU Electricity Dashboard</span>
+      </div>
+      <nav>
+        <a href="/" class="nav-link">← Live Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Year navigator "curtain" -->
+  <div class="year-nav-bar">
+    <div class="year-nav-inner">
+      <span class="year-nav-label">Year</span>
+      <div class="year-strip-wrap">
+        <div class="year-strip" id="year-strip"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="germany-main">
+
+    <!-- Main chart card -->
+    <div class="card chart-card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Annual Electricity Generation</div>
+          <div class="card-subtitle">
+            Net TWh by source · 2010–2024 historical · 2025–2050 projected
+            (EEG 2023, NEP 2037, ENTSO-E TYNDP 2024)
+          </div>
+        </div>
+      </div>
+      <div class="canvas-wrapper tall">
+        <canvas id="mix-chart"></canvas>
+        <div class="card-overlay" id="mix-overlay"><div class="spinner"></div></div>
+      </div>
+    </div>
+
+    <!-- Year detail panel -->
+    <div class="card detail-card hidden" id="year-panel">
+      <div class="detail-header">
+        <span class="detail-year" id="panel-year">—</span>
+        <span class="badge" id="panel-badge">Historical</span>
+      </div>
+      <div class="detail-stats">
+        <div class="detail-stat">
+          <div class="detail-val" id="panel-total">—</div>
+          <div class="detail-lbl">Total generation</div>
+        </div>
+        <div class="detail-stat">
+          <div class="detail-val green" id="panel-re">—</div>
+          <div class="detail-lbl">Renewable share</div>
+        </div>
+      </div>
+      <table class="source-table">
+        <thead>
+          <tr><th>Source</th><th>TWh</th><th>Share</th></tr>
+        </thead>
+        <tbody id="panel-sources"></tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Historical: Fraunhofer ISE Energy-Charts · AGEB Energiebilanz</span>
+      <span>Projected: EEG 2023 · NEP 2037 (50Hz/Amprion/TenneT/TransnetBW) · ENTSO-E TYNDP 2024</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script type="module" src="/js/germany.js"></script>
+</body>
+</html>

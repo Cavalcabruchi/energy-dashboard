@@ -1,0 +1,76 @@
+.controls-bar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 52px;
+  z-index: 90;
+  padding: 0.75rem 1.5rem;
+}
+.controls-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.control-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+}
+
+.dashboard-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.25rem;
+}
+
+.generation-card {
+  grid-column: 1 / 3;
+}
+.donut-card {
+  grid-column: 3 / 4;
+  display: flex;
+  flex-direction: column;
+}
+.price-card {
+  grid-column: 1 / 4;
+}
+
+.generation-card .canvas-wrapper { height: 320px; }
+.donut-card .canvas-wrapper      { height: 240px; flex: 1; }
+.price-card .canvas-wrapper      { height: 170px; }
+
+.donut-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.75rem 0 0.25rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.75rem;
+}
+
+.price-stats {
+  display: flex;
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid { grid-template-columns: 1fr; padding: 1rem; }
+  .generation-card, .donut-card, .price-card { grid-column: 1; }
+  .generation-card .canvas-wrapper { height: 260px; }
+  .donut-card .canvas-wrapper      { height: 220px; }
+}
